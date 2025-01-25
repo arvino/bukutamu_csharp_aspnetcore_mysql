@@ -34,19 +34,20 @@ namespace BukuTamuApp.Controllers
 
         [HttpPost]
         [Authorize(Roles = "member,admin")]
-        public async Task<IActionResult> Create(BukuTamu bukuTamu, IFormFile gambar)
+        public async Task<IActionResult> Create(BukuTamu bukuTamu, IFormFile? gambar)
         {
-            if (ModelState.IsValid)
+            var memberId = int.Parse(User.FindFirst("MemberId")?.Value ?? "0");
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null)
             {
-                var memberId = int.Parse(User.FindFirst("MemberId")?.Value ?? "0");
-                var member = await _context.Members.FindAsync(memberId);
-                if (member == null)
-                {
-                    return BadRequest("Member tidak ditemukan");
-                }
+                return BadRequest("Member tidak ditemukan");
+            }
 
+            try
+            {
                 bukuTamu.Member = member;
                 bukuTamu.MemberId = memberId;
+                bukuTamu.Timestamp = DateTime.Now;
 
                 if (gambar != null)
                 {
@@ -61,14 +62,16 @@ namespace BukuTamuApp.Controllers
                     bukuTamu.Gambar = fileName;
                 }
 
-                bukuTamu.Timestamp = DateTime.Now;
-
                 _context.BukuTamus.Add(bukuTamu);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-            return View(bukuTamu);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error saat menyimpan: " + ex.Message);
+                return View(bukuTamu);
+            }
         }
 
         public async Task<IActionResult> Details(int id)

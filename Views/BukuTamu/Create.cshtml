@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <form asp-action="Create" method="post" enctype="multipart/form-data">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     
                     <div class="mb-3">
                         <label asp-for="Messages" class="form-label">Pesan</label>
@@ -33,4 +33,8 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

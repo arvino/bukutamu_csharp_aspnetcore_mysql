@@ -6,6 +6,7 @@ using BukuTamuApp.Models;
 using BukuTamuApp.Data;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace BukuTamuApp.Controllers
 {
@@ -60,33 +61,36 @@ namespace BukuTamuApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Member model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             try
             {
-                if (ModelState.IsValid)
+                // Cek email sudah terdaftar
+                if (await _context.Members.AnyAsync(m => m.Email == model.Email))
                 {
-                    if (_context.Members.Any(m => m.Email == model.Email))
-                    {
-                        ModelState.AddModelError("Email", "Email sudah terdaftar");
-                        return View(model);
-                    }
-
-                    model.Password = HashPassword(model.Password);
-                    model.Role = "member";
-                    model.BukuTamus = new List<BukuTamu>();
-
-                    _context.Members.Add(model);
-                    await _context.SaveChangesAsync();
-
-                    TempData["Success"] = "Registrasi berhasil! Silakan login.";
-                    return RedirectToAction("Login");
+                    ModelState.AddModelError("Email", "Email sudah terdaftar");
+                    return View(model);
                 }
+
+                // Set default values
+                model.Password = HashPassword(model.Password);
+                model.Role = "member";
+                model.BukuTamus = new List<BukuTamu>();
+
+                _context.Members.Add(model);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "Registrasi berhasil! Silakan login.";
+                return RedirectToAction("Login");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Terjadi kesalahan saat mendaftar: " + ex.Message);
+                ModelState.AddModelError("", $"Terjadi kesalahan: {ex.Message}");
+                return View(model);
             }
-
-            return View(model);
         }
 
         public async Task<IActionResult> Logout()
