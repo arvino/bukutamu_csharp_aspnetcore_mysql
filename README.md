@@ -28,7 +28,7 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ## Teknologi
 
-- ASP.NET Core 6.0
+- ASP.NET Core 9.0
 - Entity Framework Core
 - MySQL (XAMPP)
 - Bootstrap 5
@@ -36,20 +36,46 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ## Persyaratan Sistem
 
-- .NET 6.0 SDK
+- .NET 9.0 SDK
 - XAMPP (dengan MySQL)
 - Visual Studio 2022 atau VS Code
+
+## Persiapan Development
+
+1. Install .NET SDK
+   - Download .NET 9.0 SDK dari https://dotnet.microsoft.com/download/dotnet/9.0
+   - Jalankan installer
+   - Buka Command Prompt atau PowerShell baru
+   - Verifikasi instalasi dengan menjalankan:
+   ```bash
+   dotnet --version
+   ```
+
+2. Install Visual Studio Code (opsional)
+   - Download VS Code dari https://code.visualstudio.com/
+   - Install extension C# Dev Kit
+   - Install extension C# untuk syntax highlighting
 
 ## Instalasi
 
 1. Clone repository
 
-2. Install dan jalankan XAMPP
+2. Buka terminal/command prompt, masuk ke direktori proyek:
+   ```bash
+   cd path/to/bukutamu_csharp_aspnetcore_mysql
+   ```
+
+3. Install dependencies:
+   ```bash
+   dotnet restore
+   ```
+
+4. Install dan jalankan XAMPP
    - Download XAMPP terbaru dari https://www.apachefriends.org/
    - Install XAMPP
    - Start Apache dan MySQL dari XAMPP Control Panel
 
-3. Buat database dan tabel
+5. Buat database dan tabel
    - Buka phpMyAdmin (http://localhost/phpmyadmin)
    - Buat database baru:
    ```sql
@@ -80,7 +106,7 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
    );
    ```
 
-4. Konfigurasi koneksi database di appsettings.json:
+6. Konfigurasi koneksi database di appsettings.json:
    ```json
    {
      "ConnectionStrings": {
@@ -90,18 +116,18 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
    ```
    Note: Secara default XAMPP MySQL menggunakan username "root" tanpa password
 
-5. Jalankan migrasi database:
+7. Jalankan migrasi database:
    ```bash
    dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
 
-6. Buat folder untuk upload gambar:
+8. Buat folder untuk upload gambar:
    ```bash
    mkdir wwwroot/uploads
    ```
 
-7. Jalankan aplikasi:
+9. Jalankan aplikasi:
    ```bash
    dotnet run
    ```
