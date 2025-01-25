@@ -1,0 +1,10 @@
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.csproj.AssemblyReference.cache
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.AssemblyInfoInputs.cache
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.AssemblyInfo.cs
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.csproj.CoreCompileInputs.cache
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.MvcApplicationPartsAssemblyInfo.cs
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.MvcApplicationPartsAssemblyInfo.cache
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.RazorAssemblyInfo.cache
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.RazorAssemblyInfo.cs
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net8.0\BukuTamuApp.sourcelink.json
