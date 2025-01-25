@@ -48,8 +48,9 @@ namespace BukuTamuApp.Controllers
                 // Cek apakah sudah menulis pesan hari ini
                 var today = DateTime.Today;
                 var hasPostedToday = await _context.BukuTamus
-                    .AnyAsync(b => b.MemberId == memberId && 
-                                  b.Timestamp.Date == today);
+                    .AsNoTracking()
+                    .Where(b => b.MemberId == memberId)
+                    .AnyAsync(b => b.Timestamp.Date == today);
 
                 if (hasPostedToday)
                 {
@@ -57,11 +58,13 @@ namespace BukuTamuApp.Controllers
                     return View(bukuTamu);
                 }
 
+                // Set properti yang diperlukan
                 bukuTamu.Member = member;
                 bukuTamu.MemberId = memberId;
                 bukuTamu.Timestamp = DateTime.Now;
 
-                if (gambar != null)
+                // Handle upload gambar
+                if (gambar != null && gambar.Length > 0)
                 {
                     var fileName = Path.GetRandomFileName() + Path.GetExtension(gambar.FileName);
                     var filePath = Path.Combine(_environment.WebRootPath, "uploads", fileName);
@@ -74,14 +77,16 @@ namespace BukuTamuApp.Controllers
                     bukuTamu.Gambar = fileName;
                 }
 
-                _context.BukuTamus.Add(bukuTamu);
+                // Simpan ke database
+                await _context.BukuTamus.AddAsync(bukuTamu);
                 await _context.SaveChangesAsync();
 
+                TempData["Success"] = "Pesan berhasil disimpan";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error saat menyimpan: " + ex.Message);
+                ModelState.AddModelError("", $"Error saat menyimpan: {ex.Message}");
                 return View(bukuTamu);
             }
         }

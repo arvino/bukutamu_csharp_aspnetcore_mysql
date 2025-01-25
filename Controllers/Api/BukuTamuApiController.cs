@@ -82,8 +82,9 @@ namespace BukuTamuApp.Controllers.Api
             // Cek apakah sudah menulis pesan hari ini
             var today = DateTime.Today;
             var hasPostedToday = await _context.BukuTamus
-                .AnyAsync(b => b.MemberId == memberId && 
-                              b.Timestamp.Date == today);
+                .AsNoTracking()  // Tambahkan ini untuk performa
+                .Where(b => b.MemberId == memberId)
+                .AnyAsync(b => b.Timestamp.Date == today);
 
             if (hasPostedToday)
             {
@@ -98,7 +99,8 @@ namespace BukuTamuApp.Controllers.Api
                 Member = member
             };
 
-            if (dto.Gambar != null)
+            // Handle upload gambar
+            if (dto.Gambar != null && dto.Gambar.Length > 0)
             {
                 var fileName = Path.GetRandomFileName() + Path.GetExtension(dto.Gambar.FileName);
                 var filePath = Path.Combine(_environment.WebRootPath, "uploads", fileName);
@@ -111,10 +113,22 @@ namespace BukuTamuApp.Controllers.Api
                 bukuTamu.Gambar = fileName;
             }
 
-            _context.BukuTamus.Add(bukuTamu);
+            // Simpan ke database
+            await _context.BukuTamus.AddAsync(bukuTamu);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetBukuTamu), new { id = bukuTamu.Id }, bukuTamu);
+            // Return DTO
+            var bukuTamuDTO = new BukuTamuDTO
+            {
+                Id = bukuTamu.Id,
+                MemberId = bukuTamu.MemberId,
+                Messages = bukuTamu.Messages,
+                Gambar = bukuTamu.Gambar,
+                Timestamp = bukuTamu.Timestamp,
+                MemberNama = bukuTamu.Member.Nama
+            };
+
+            return CreatedAtAction(nameof(GetBukuTamu), new { id = bukuTamu.Id }, bukuTamuDTO);
         }
 
         // PUT: api/BukuTamuApi/5
