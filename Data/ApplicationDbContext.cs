@@ -15,14 +15,25 @@ namespace BukuTamuApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Member>()
-                .HasIndex(m => m.Email)
-                .IsUnique();
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BukuTamu>()
-                .HasOne(b => b.Member)
-                .WithMany(m => m.BukuTamus)
-                .HasForeignKey(b => b.MemberId);
+            // Konfigurasi nama tabel
+            modelBuilder.Entity<Member>().ToTable("member");
+            modelBuilder.Entity<BukuTamu>().ToTable("bukutamu");
+
+            modelBuilder.Entity<Member>(entity =>
+            {
+                entity.HasIndex(e => e.Email).IsUnique();
+                entity.Property(e => e.Role).HasMaxLength(20);
+            });
+
+            modelBuilder.Entity<BukuTamu>(entity =>
+            {
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.BukuTamus)
+                    .HasForeignKey(d => d.MemberId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 } 
