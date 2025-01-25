@@ -8,5 +8,11 @@ namespace BukuTamuApp.Controllers
         {
             return RedirectToAction("Index", "BukuTamu");
         }
+
+        [Route("/Home/Error")]
+        public IActionResult Error()
+        {
+            return View("Error");
+        }
     }
 } 
