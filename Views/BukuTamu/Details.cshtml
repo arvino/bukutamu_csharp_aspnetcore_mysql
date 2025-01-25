@@ -1,0 +1,60 @@
+@model BukuTamuApp.Models.BukuTamu
+
+@{
+    ViewData["Title"] = "Detail Buku Tamu";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Detail Buku Tamu</h3>
+                <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h5 class="card-title">@Model.Member.Nama</h5>
+                        <small class="text-muted">@Model.Timestamp.ToString("dd MMM yyyy HH:mm")</small>
+                    </div>
+                    <p class="card-text">@Model.Messages</p>
+                    @if (!string.IsNullOrEmpty(Model.Gambar))
+                    {
+                        <div class="text-center mb-3">
+                            <img src="~/uploads/@Model.Gambar" class="img-fluid" style="max-height: 400px;" alt="Gambar Buku Tamu" />
+                        </div>
+                    }
+                </div>
+
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Informasi Member</h6>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-3">Nama</dt>
+                            <dd class="col-sm-9">@Model.Member.Nama</dd>
+
+                            <dt class="col-sm-3">Email</dt>
+                            <dd class="col-sm-9">@Model.Member.Email</dd>
+
+                            @if (!string.IsNullOrEmpty(Model.Member.Phone))
+                            {
+                                <dt class="col-sm-3">Telepon</dt>
+                                <dd class="col-sm-9">@Model.Member.Phone</dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <div class="mt-3">
+                        <form asp-controller="BukuTamu" asp-action="Delete" asp-route-id="@Model.Id" 
+                              method="post" onsubmit="return confirm('Yakin ingin menghapus pesan ini?');">
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div> 

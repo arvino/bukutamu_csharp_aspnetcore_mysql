@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\uploads\\rdhpyfnr.hjo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\rdhpyfnr.hjo.jpg"
+    },
+    {
+      "Id": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\uploads\\yypzmgtq.kik.jpg",
+      "PackagePath": "staticwebassets\\uploads\\yypzmgtq.kik.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BukuTamuApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

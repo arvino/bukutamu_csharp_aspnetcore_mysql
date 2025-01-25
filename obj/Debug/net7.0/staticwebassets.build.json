@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "61PA60rgt66BuYv9OjBocAstP+rFxSlQpFp4GxT7OdE=",
+  "Hash": "Q+LCDwPoo2LtwfV1KM2lcN3H9u0/7Yie8jH11N5BYHw=",
   "Source": "BukuTamuApp",
   "BasePath": "_content/BukuTamuApp",
   "Mode": "Default",
@@ -32,6 +32,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\uploads\\rdhpyfnr.hjo.jpg",
+      "SourceId": "BukuTamuApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\",
+      "BasePath": "_content/BukuTamuApp",
+      "RelativePath": "uploads/rdhpyfnr.hjo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\rdhpyfnr.hjo.jpg"
+    },
+    {
+      "Identity": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\uploads\\yypzmgtq.kik.jpg",
+      "SourceId": "BukuTamuApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\",
+      "BasePath": "_content/BukuTamuApp",
+      "RelativePath": "uploads/yypzmgtq.kik.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\yypzmgtq.kik.jpg"
     }
   ]
 }

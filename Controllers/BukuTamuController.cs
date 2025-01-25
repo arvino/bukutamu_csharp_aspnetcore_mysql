@@ -99,5 +99,43 @@ namespace BukuTamuApp.Controllers
 
             return View(bukuTamu);
         }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var bukuTamu = await _context.BukuTamus
+                .Include(b => b.Member)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (bukuTamu == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // Hapus file gambar jika ada
+                if (!string.IsNullOrEmpty(bukuTamu.Gambar))
+                {
+                    var filePath = Path.Combine(_environment.WebRootPath, "uploads", bukuTamu.Gambar);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+
+                _context.BukuTamus.Remove(bukuTamu);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "Pesan berhasil dihapus";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error saat menghapus: " + ex.Message);
+                return View("Details", bukuTamu);
+            }
+        }
     }
 } 
