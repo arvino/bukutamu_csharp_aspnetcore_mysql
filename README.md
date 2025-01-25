@@ -42,7 +42,67 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ## Persiapan Development
 
+### Mengelola Versi .NET SDK
+
+#### Melihat Versi Terinstal
+```bash
+# Lihat daftar SDK
+dotnet --list-sdks
+
+# Lihat daftar runtime
+dotnet --list-runtimes
+```
+
+#### Uninstall .NET SDK
+1. Menggunakan Windows Settings:
+   - Buka Settings > Apps & Features
+   - Cari "Microsoft .NET SDK"
+   - Pilih versi yang ingin dihapus
+   - Klik Uninstall
+
+2. Menggunakan PowerShell (Administrator):
+   ```powershell
+   # Uninstall SDK versi spesifik
+   winget uninstall Microsoft.DotNet.SDK.9
+   ```
+
+3. Menggunakan dotnet-core-uninstall tool:
+   ```bash
+   # Install tool
+   dotnet tool install -g dotnet-core-uninstall
+
+   # Lihat versi terinstal
+   dotnet-core-uninstall list
+
+   # Hapus SDK spesifik
+   dotnet-core-uninstall remove 9.0.100
+   ```
+
+#### Downgrade/Upgrade Proyek
+1. Edit file .csproj:
+   ```xml
+   <PropertyGroup>
+       <TargetFramework>net7.0</TargetFramework>
+   </PropertyGroup>
+   ```
+
+2. Update package versions di .csproj:
+   ```xml
+   <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+   ```
+
+3. Restore dan build ulang:
+   ```bash
+   dotnet restore
+   dotnet build
+   ```
+
+> Note: Setelah uninstall/install SDK, restart terminal atau PowerShell untuk memperbarui PATH
+
 1. Install .NET SDK
+   - Jika ada versi .NET lain yang terinstal, uninstall terlebih dahulu:
+     - Buka Settings > Apps & Features, atau
+     - Jalankan di PowerShell: `winget uninstall Microsoft.DotNet.SDK.9`
    - Download .NET 7.0 SDK dari https://dotnet.microsoft.com/download/dotnet/7.0
    - Jalankan installer
    - Buka Command Prompt atau PowerShell baru
