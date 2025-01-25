@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using BukuTamuApp.Data;
+using BukuTamuApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

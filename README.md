@@ -132,6 +132,22 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
    dotnet run
    ```
 
+10. Akses aplikasi:
+    - Setelah menjalankan `dotnet run`, akan muncul output seperti ini:
+    ```bash
+    info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:7234
+      Now listening on: http://localhost:5234
+    info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+    ```
+    - Buka browser dan akses salah satu URL tersebut (disarankan menggunakan HTTPS)
+    - Jika muncul peringatan keamanan di browser, klik "Advanced" dan "Proceed"
+    - Untuk mempercayai sertifikat development secara permanen, jalankan:
+    ```bash
+    dotnet dev-certs https --trust
+    ```
+
 ## Struktur Database
 
 ### Tabel Member
