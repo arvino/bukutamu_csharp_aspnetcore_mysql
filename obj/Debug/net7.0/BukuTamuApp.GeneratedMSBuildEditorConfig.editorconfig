@@ -1,0 +1,53 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BukuTamuApp
+build_property.RootNamespace = BukuTamuApp
+build_property.ProjectDir = C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Admin/BukuTamuList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQnVrdVRhbXVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/BukuTamu/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVrdVRhbXVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/BukuTamu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVrdVRhbXVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/teltics_code/rnd_2025/bukutamu_csharp_aspnetcore_mysql/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

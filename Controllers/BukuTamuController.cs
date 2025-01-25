@@ -38,6 +38,15 @@ namespace BukuTamuApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                var memberId = int.Parse(User.FindFirst("MemberId")?.Value ?? "0");
+                var member = await _context.Members.FindAsync(memberId);
+                if (member == null)
+                {
+                    return BadRequest("Member tidak ditemukan");
+                }
+
+                bukuTamu.Member = member;
+
                 if (gambar != null)
                 {
                     var fileName = Path.GetRandomFileName() + Path.GetExtension(gambar.FileName);
@@ -51,7 +60,6 @@ namespace BukuTamuApp.Controllers
                     bukuTamu.Gambar = fileName;
                 }
 
-                bukuTamu.MemberId = int.Parse(User.FindFirst("MemberId").Value);
                 bukuTamu.Timestamp = DateTime.Now;
 
                 _context.BukuTamus.Add(bukuTamu);

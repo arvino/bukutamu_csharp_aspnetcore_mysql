@@ -121,22 +121,27 @@ dotnet --list-runtimes
 
 1. Clone repository
 
-2. Buka terminal/command prompt, masuk ke direktori proyek:
+2. Konfigurasi HTTPS Development Certificate:
+   ```bash
+   dotnet dev-certs https --trust
+   ```
+
+3. Buka terminal/command prompt, masuk ke direktori proyek:
    ```bash
    cd path/to/bukutamu_csharp_aspnetcore_mysql
    ```
 
-3. Install dependencies:
+4. Install dependencies:
    ```bash
    dotnet restore
    ```
 
-4. Install dan jalankan XAMPP
+5. Install dan jalankan XAMPP
    - Download XAMPP terbaru dari https://www.apachefriends.org/
    - Install XAMPP
    - Start Apache dan MySQL dari XAMPP Control Panel
 
-5. Buat database dan tabel
+6. Buat database dan tabel
    - Buka phpMyAdmin (http://localhost/phpmyadmin)
    - Buat database baru:
    ```sql
@@ -167,38 +172,57 @@ dotnet --list-runtimes
    );
    ```
 
-6. Konfigurasi koneksi database di appsettings.json:
+7. Konfigurasi aplikasi di appsettings.json:
    ```json
    {
+     "Logging": {
+       "LogLevel": {
+         "Default": "Information",
+         "Microsoft.AspNetCore": "Warning"
+       }
+     },
+     "AllowedHosts": "*",
      "ConnectionStrings": {
        "DefaultConnection": "Server=localhost;Database=bukutamu_simple;User=root;Password=;"
+     },
+     "Kestrel": {
+       "Endpoints": {
+         "Http": {
+           "Url": "http://localhost:5000"
+         },
+         "Https": {
+           "Url": "https://localhost:5001"
+         }
+       }
      }
    }
    ```
-   Note: Secara default XAMPP MySQL menggunakan username "root" tanpa password
+   Note: 
+   - Secara default XAMPP MySQL menggunakan username "root" tanpa password
+   - Aplikasi akan berjalan di http://localhost:5000 dan https://localhost:5001
 
-7. Jalankan migrasi database:
+8. Jalankan migrasi database:
    ```bash
    dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
 
-8. Buat folder untuk upload gambar:
+9. Buat folder untuk upload gambar:
    ```bash
    mkdir wwwroot/uploads
    ```
 
-9. Jalankan aplikasi:
-   ```bash
-   dotnet run
-   ```
+10. Jalankan aplikasi:
+    ```bash
+    dotnet run
+    ```
 
-10. Akses aplikasi:
+11. Akses aplikasi:
     - Setelah menjalankan `dotnet run`, akan muncul output seperti ini:
     ```bash
     info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: https://localhost:7234
-      Now listening on: http://localhost:5234
+      Now listening on: https://localhost:5001
+      Now listening on: http://localhost:5000
     info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
     ```
@@ -314,4 +338,24 @@ Menghapus buku tamu
     "memberNama": "Nama Member"
 }
 ```
+
+## Error Handling
+
+Aplikasi memiliki beberapa mekanisme error handling:
+
+1. Development Environment
+   - Menampilkan detailed error page
+   - Swagger UI tersedia di /swagger
+
+2. Production Environment
+   - Custom error page (/Views/Shared/Error.cshtml)
+   - HTTPS enforcement dengan HSTS
+   - Logging ke file system
+
+3. API Responses
+   - 400 Bad Request - Invalid input
+   - 401 Unauthorized - Not authenticated
+   - 403 Forbidden - Not authorized
+   - 404 Not Found - Resource not found
+   - 500 Internal Server Error - Server errors
 

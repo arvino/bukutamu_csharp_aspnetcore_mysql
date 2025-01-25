@@ -72,13 +72,19 @@ namespace BukuTamuApp.Controllers.Api
         [HttpPost]
         public async Task<ActionResult<BukuTamuDTO>> CreateBukuTamu([FromForm] CreateBukuTamuDTO dto)
         {
-            var memberId = int.Parse(User.FindFirst("MemberId").Value);
+            var memberId = int.Parse(User.FindFirst("MemberId")?.Value ?? "0");
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null)
+            {
+                return BadRequest("Member tidak ditemukan");
+            }
 
             var bukuTamu = new BukuTamu
             {
                 MemberId = memberId,
                 Messages = dto.Messages,
-                Timestamp = DateTime.Now
+                Timestamp = DateTime.Now,
+                Member = member
             };
 
             if (dto.Gambar != null)
@@ -111,7 +117,7 @@ namespace BukuTamuApp.Controllers.Api
                 return NotFound();
             }
 
-            var memberId = int.Parse(User.FindFirst("MemberId").Value);
+            var memberId = int.Parse(User.FindFirst("MemberId")?.Value ?? "0");
             if (!User.IsInRole("admin") && bukuTamu.MemberId != memberId)
             {
                 return Forbid();

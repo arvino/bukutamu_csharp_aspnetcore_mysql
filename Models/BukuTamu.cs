@@ -8,5 +8,10 @@ namespace BukuTamuApp.Models
         public string? Gambar { get; set; }  // Optional
         public DateTime Timestamp { get; set; }
         public required Member Member { get; set; }
+
+        public BukuTamu()
+        {
+            Timestamp = DateTime.Now;  // Set default value
+        }
     }
 } 
