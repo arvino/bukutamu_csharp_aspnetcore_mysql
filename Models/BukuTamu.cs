@@ -4,9 +4,9 @@ namespace BukuTamuApp.Models
     {
         public int Id { get; set; }
         public int MemberId { get; set; }
-        public string Messages { get; set; }
-        public string Gambar { get; set; }
+        public required string Messages { get; set; }
+        public string? Gambar { get; set; }  // Optional
         public DateTime Timestamp { get; set; }
-        public virtual Member Member { get; set; }
+        public required Member Member { get; set; }
     }
 } 

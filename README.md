@@ -28,7 +28,7 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ## Teknologi
 
-- ASP.NET Core 8.0 (LTS)
+- ASP.NET Core 7.0 (LTS)
 - Entity Framework Core
 - MySQL (XAMPP)
 - Bootstrap 5
@@ -36,14 +36,14 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ## Persyaratan Sistem
 
-- .NET 8.0 SDK
+- .NET 7.0 SDK
 - XAMPP (dengan MySQL)
 - Visual Studio 2022 atau VS Code
 
 ## Persiapan Development
 
 1. Install .NET SDK
-   - Download .NET 8.0 SDK dari https://dotnet.microsoft.com/download/dotnet/8.0
+   - Download .NET 7.0 SDK dari https://dotnet.microsoft.com/download/dotnet/7.0
    - Jalankan installer
    - Buka Command Prompt atau PowerShell baru
    - Verifikasi instalasi dengan menjalankan:

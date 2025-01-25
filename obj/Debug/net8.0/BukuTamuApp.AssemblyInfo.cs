@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BukuTamuApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7749368c064c3e486b081064b83a600b741f6b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+983052d7aa76a0772f3ecc4a309b7971c0e31496")]
 [assembly: System.Reflection.AssemblyProductAttribute("BukuTamuApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BukuTamuApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
