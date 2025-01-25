@@ -369,3 +369,6 @@ C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net7.0\refin
 C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net7.0\BukuTamuApp.pdb
 C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net7.0\BukuTamuApp.genruntimeconfig.cache
 C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\obj\Debug\net7.0\ref\BukuTamuApp.dll
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\bin\Debug\net7.0\web.config
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\bin\Debug\net7.0\appsettings.Development.json
+C:\teltics_code\rnd_2025\bukutamu_csharp_aspnetcore_mysql\bin\Debug\net7.0\BukuTamuApp.staticwebassets.runtime.json

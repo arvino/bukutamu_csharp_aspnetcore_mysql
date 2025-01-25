@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\teltics_code\\rnd_2025\\bukutamu_csharp_aspnetcore_mysql\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BukuTamuApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BukuTamuApp.props",
+      "PackagePath": "build\\BukuTamuApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BukuTamuApp.props",
+      "PackagePath": "buildMultiTargeting\\BukuTamuApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BukuTamuApp.props",
+      "PackagePath": "buildTransitive\\BukuTamuApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
