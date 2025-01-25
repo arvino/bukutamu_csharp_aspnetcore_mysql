@@ -1,0 +1,52 @@
+@model IEnumerable<BukuTamuApp.Models.BukuTamu>
+
+@{
+    ViewData["Title"] = "Manajemen Buku Tamu";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Manajemen Buku Tamu</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama Member</th>
+                        <th>Pesan</th>
+                        <th>Waktu</th>
+                        <th>Gambar</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Member.Nama</td>
+                            <td>@item.Messages</td>
+                            <td>@item.Timestamp.ToString("dd MMM yyyy HH:mm")</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.Gambar))
+                                {
+                                    <img src="~/uploads/@item.Gambar" style="height: 50px;" />
+                                }
+                            </td>
+                            <td>
+                                <form asp-action="DeleteBukuTamu" asp-route-id="@item.Id" method="post"
+                                      onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesan ini?');">
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Kembali ke Dashboard</a>
+</div> 

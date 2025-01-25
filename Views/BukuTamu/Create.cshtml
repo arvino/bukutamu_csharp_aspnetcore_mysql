@@ -1,0 +1,36 @@
+@model BukuTamuApp.Models.BukuTamu
+
+@{
+    ViewData["Title"] = "Tulis Pesan";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>Tulis Pesan Buku Tamu</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Messages" class="form-label">Pesan</label>
+                        <textarea asp-for="Messages" class="form-control" rows="5" required></textarea>
+                        <span asp-validation-for="Messages" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Upload Gambar (Opsional)</label>
+                        <input type="file" name="gambar" class="form-control" accept="image/*" />
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 

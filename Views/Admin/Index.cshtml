@@ -1,0 +1,45 @@
+@model IEnumerable<BukuTamuApp.Models.Member>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Manajemen Member</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nama</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>
+                                <form asp-action="DeleteMember" asp-route-id="@item.Id" method="post" 
+                                      onsubmit="return confirm('Apakah Anda yakin ingin menghapus member ini?');">
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="BukuTamuList" class="btn btn-primary">Lihat Daftar Buku Tamu</a>
+</div> 
