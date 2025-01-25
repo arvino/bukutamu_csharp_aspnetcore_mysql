@@ -88,7 +88,8 @@ dotnet --list-runtimes
 
 2. Update package versions di .csproj:
    ```xml
-   <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+   <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+   <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0-silver.1" />
    ```
 
 3. Restore dan build ulang:
