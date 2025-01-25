@@ -1,6 +1,14 @@
-# Aplikasi Buku Tamu
+# Aplikasi Web Buku Tamu
 
-Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
+Aplikasi Web Buku Tamu menggunakan ASP.NET Core dan MySQL.
+
+## Tentang Aplikasi
+Aplikasi ini dibuat untuk mengelola buku tamu digital dengan fitur:
+- Manajemen member dan admin
+- Upload foto/gambar
+- Pembatasan posting (1 pesan per hari)
+- Responsive design
+- API endpoints untuk integrasi
 
 ## Fitur
 
@@ -17,6 +25,7 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 
 ### Halaman Member
 - Menulis pesan buku tamu
+- Maksimal 1 pesan per hari
 - Upload gambar/foto
 - Edit profil (password, nama, phone)
 - Melihat daftar dan detail buku tamu
@@ -24,6 +33,8 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 ### Halaman Admin
 - Manajemen member (CRUD)
 - Manajemen buku tamu (CRUD)
+- Dapat menulis dan edit pesan
+- Maksimal 1 pesan per hari
 - Melihat semua data
 
 ## Teknologi
@@ -33,12 +44,15 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 - MySQL (XAMPP)
 - Bootstrap 5
 - jQuery
+- ASP.NET Core Identity
+- Cookie Authentication
 
 ## Persyaratan Sistem
 
 - .NET 7.0 SDK
 - XAMPP (dengan MySQL)
 - Visual Studio 2022 atau VS Code
+- Git (untuk clone repository)
 
 ## Persiapan Development
 
@@ -218,20 +232,8 @@ dotnet --list-runtimes
     ```
 
 11. Akses aplikasi:
-    - Setelah menjalankan `dotnet run`, akan muncul output seperti ini:
-    ```bash
-    info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: https://localhost:5001
-      Now listening on: http://localhost:5000
-    info: Microsoft.Hosting.Lifetime[0]
-      Application started. Press Ctrl+C to shut down.
-    ```
-    - Buka browser dan akses salah satu URL tersebut (disarankan menggunakan HTTPS)
-    - Jika muncul peringatan keamanan di browser, klik "Advanced" dan "Proceed"
-    - Untuk mempercayai sertifikat development secara permanen, jalankan:
-    ```bash
-    dotnet dev-certs https --trust
-    ```
+    - http://localhost:5000 (HTTP)
+    - https://localhost:5001 (HTTPS)
 
 ## Struktur Database
 
@@ -279,6 +281,9 @@ dotnet --list-runtimes
 - Autentikasi menggunakan Cookie
 - Otorisasi berbasis Role
 - Validasi email saat registrasi
+- HTTPS enforcement
+- Cross-Site Request Forgery (CSRF) protection
+- Secure file upload handling
 
 ## Membuat User Admin
 
@@ -361,4 +366,9 @@ Aplikasi memiliki beberapa mekanisme error handling:
    - 403 Forbidden - Not authorized
    - 404 Not Found - Resource not found
    - 500 Internal Server Error - Server errors
+
+## Developer
+- Nama: Arvino Zulka
+- Website : https://www.arvino.my.id/
+
 
