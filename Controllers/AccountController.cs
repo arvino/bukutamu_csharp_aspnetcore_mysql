@@ -49,7 +49,7 @@ namespace BukuTamuApp.Controllers
 
             if (user.Role == "admin")
                 return RedirectToAction("Index", "Admin");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "BukuTamu");
         }
 
         public IActionResult Register()
@@ -60,29 +60,39 @@ namespace BukuTamuApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Member model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (_context.Members.Any(m => m.Email == model.Email))
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError("Email", "Email sudah terdaftar");
-                    return View(model);
+                    if (_context.Members.Any(m => m.Email == model.Email))
+                    {
+                        ModelState.AddModelError("Email", "Email sudah terdaftar");
+                        return View(model);
+                    }
+
+                    model.Password = HashPassword(model.Password);
+                    model.Role = "member";
+                    model.BukuTamus = new List<BukuTamu>();
+
+                    _context.Members.Add(model);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Success"] = "Registrasi berhasil! Silakan login.";
+                    return RedirectToAction("Login");
                 }
-
-                model.Password = HashPassword(model.Password);
-                model.Role = "member";
-                
-                _context.Members.Add(model);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Login");
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Terjadi kesalahan saat mendaftar: " + ex.Message);
+            }
+
             return View(model);
         }
 
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "BukuTamu");
         }
 
         private string HashPassword(string password)
@@ -92,6 +102,11 @@ namespace BukuTamuApp.Controllers
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 return Convert.ToBase64String(hashedBytes);
             }
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 } 

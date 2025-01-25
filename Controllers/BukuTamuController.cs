@@ -26,7 +26,6 @@ namespace BukuTamuApp.Controllers
             return View(bukuTamus);
         }
 
-        [Authorize(Policy = "MemberPolicy")]
         [Authorize(Roles = "member,admin")]
         public IActionResult Create()
         {
@@ -34,7 +33,6 @@ namespace BukuTamuApp.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "MemberPolicy")]
         [Authorize(Roles = "member,admin")]
         public async Task<IActionResult> Create(BukuTamu bukuTamu, IFormFile gambar)
         {
@@ -48,6 +46,7 @@ namespace BukuTamuApp.Controllers
                 }
 
                 bukuTamu.Member = member;
+                bukuTamu.MemberId = memberId;
 
                 if (gambar != null)
                 {
