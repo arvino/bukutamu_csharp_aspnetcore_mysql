@@ -79,6 +79,17 @@ namespace BukuTamuApp.Controllers.Api
                 return BadRequest("Member tidak ditemukan");
             }
 
+            // Cek apakah sudah menulis pesan hari ini
+            var today = DateTime.Today;
+            var hasPostedToday = await _context.BukuTamus
+                .AnyAsync(b => b.MemberId == memberId && 
+                              b.Timestamp.Date == today);
+
+            if (hasPostedToday)
+            {
+                return BadRequest("Anda sudah menulis pesan hari ini. Silakan coba lagi besok.");
+            }
+
             var bukuTamu = new BukuTamu
             {
                 MemberId = memberId,

@@ -11,12 +11,17 @@
                 <h3>Tulis Pesan Buku Tamu</h3>
             </div>
             <div class="card-body">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                    </div>
+                }
+
                 <form asp-action="Create" method="post" enctype="multipart/form-data">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    
                     <div class="mb-3">
                         <label asp-for="Messages" class="form-label">Pesan</label>
-                        <textarea asp-for="Messages" class="form-control" rows="5" required></textarea>
+                        <textarea asp-for="Messages" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="Messages" class="text-danger"></span>
                     </div>
                     

@@ -254,6 +254,7 @@ dotnet --list-runtimes
 
 1. Member
    - Dapat menulis pesan
+   - Maksimal 1 pesan per hari
    - Upload gambar
    - Edit profil sendiri
    - Tidak dapat menghapus pesan
@@ -262,6 +263,7 @@ dotnet --list-runtimes
    - Manajemen penuh member
    - Manajemen penuh buku tamu
    - Dapat menulis dan edit pesan
+   - Maksimal 1 pesan per hari
    - Akses ke semua fitur
 
 ## Penggunaan

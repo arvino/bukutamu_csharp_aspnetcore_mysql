@@ -45,6 +45,18 @@ namespace BukuTamuApp.Controllers
 
             try
             {
+                // Cek apakah sudah menulis pesan hari ini
+                var today = DateTime.Today;
+                var hasPostedToday = await _context.BukuTamus
+                    .AnyAsync(b => b.MemberId == memberId && 
+                                  b.Timestamp.Date == today);
+
+                if (hasPostedToday)
+                {
+                    ModelState.AddModelError("", "Anda sudah menulis pesan hari ini. Silakan coba lagi besok.");
+                    return View(bukuTamu);
+                }
+
                 bukuTamu.Member = member;
                 bukuTamu.MemberId = memberId;
                 bukuTamu.Timestamp = DateTime.Now;
