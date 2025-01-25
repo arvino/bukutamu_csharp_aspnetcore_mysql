@@ -10,6 +10,11 @@ Aplikasi Buku Tamu berbasis web menggunakan ASP.NET Core dan MySQL.
 - Login
 - Registrasi
 
+### REST API
+- Endpoint untuk CRUD buku tamu
+- Autentikasi berbasis cookie
+- Otorisasi berbasis role (member/admin)
+
 ### Halaman Member
 - Menulis pesan buku tamu
 - Upload gambar/foto
@@ -158,5 +163,52 @@ VALUES (
     'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', -- password: 123456
     'admin'
 );
+```
+
+## API Endpoints
+
+### GET /api/BukuTamuApi
+Mengambil semua data buku tamu
+- Method: GET
+- Access: Public
+- Response: Array of BukuTamuDTO
+
+### GET /api/BukuTamuApi/{id}
+Mengambil detail buku tamu berdasarkan ID
+- Method: GET
+- Access: Public
+- Response: BukuTamuDTO
+
+### POST /api/BukuTamuApi
+Membuat buku tamu baru
+- Method: POST
+- Access: Member only
+- Request: Form-data
+  - messages: string (required)
+  - gambar: file (optional)
+
+### PUT /api/BukuTamuApi/{id}
+Mengupdate buku tamu
+- Method: PUT
+- Access: Member (pemilik) atau Admin
+- Request: Form-data
+  - messages: string (required)
+  - gambar: file (optional)
+
+### DELETE /api/BukuTamuApi/{id}
+Menghapus buku tamu
+- Method: DELETE
+- Access: Admin only
+
+### Response Format
+```json
+{
+    "id": 1,
+    "memberId": 1,
+    "messages": "Pesan buku tamu",
+    "gambar": "filename.jpg",
+    "timestamp": "2024-03-14T10:30:00",
+    "memberNama": "Nama Member"
+}
 ```
 
