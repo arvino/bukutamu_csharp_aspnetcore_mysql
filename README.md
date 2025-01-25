@@ -261,6 +261,7 @@ dotnet --list-runtimes
 2. Admin
    - Manajemen penuh member
    - Manajemen penuh buku tamu
+   - Dapat menulis dan edit pesan
    - Akses ke semua fitur
 
 ## Penggunaan

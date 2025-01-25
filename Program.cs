@@ -28,8 +28,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("MemberPolicy", policy => policy.RequireRole("member"));
-    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("admin"));
+    options.AddPolicy("MemberPolicy", policy => 
+        policy.RequireRole("member", "admin"));
+    options.AddPolicy("AdminPolicy", policy => 
+        policy.RequireRole("admin"));
 });
 
 var app = builder.Build();

@@ -27,6 +27,7 @@ namespace BukuTamuApp.Controllers
         }
 
         [Authorize(Policy = "MemberPolicy")]
+        [Authorize(Roles = "member,admin")]
         public IActionResult Create()
         {
             return View();
@@ -34,6 +35,7 @@ namespace BukuTamuApp.Controllers
 
         [HttpPost]
         [Authorize(Policy = "MemberPolicy")]
+        [Authorize(Roles = "member,admin")]
         public async Task<IActionResult> Create(BukuTamu bukuTamu, IFormFile gambar)
         {
             if (ModelState.IsValid)

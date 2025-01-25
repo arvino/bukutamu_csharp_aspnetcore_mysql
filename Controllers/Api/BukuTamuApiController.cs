@@ -68,7 +68,7 @@ namespace BukuTamuApp.Controllers.Api
         }
 
         // POST: api/BukuTamuApi
-        [Authorize(Policy = "MemberPolicy")]
+        [Authorize(Roles = "member,admin")]
         [HttpPost]
         public async Task<ActionResult<BukuTamuDTO>> CreateBukuTamu([FromForm] CreateBukuTamuDTO dto)
         {
@@ -107,7 +107,7 @@ namespace BukuTamuApp.Controllers.Api
         }
 
         // PUT: api/BukuTamuApi/5
-        [Authorize(Policy = "MemberPolicy")]
+        [Authorize(Roles = "member,admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBukuTamu(int id, [FromForm] UpdateBukuTamuDTO dto)
         {
