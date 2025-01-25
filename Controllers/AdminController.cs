@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BukuTamuApp.Models;
+using BukuTamuApp.Data;
 
 namespace BukuTamuApp.Controllers
 {

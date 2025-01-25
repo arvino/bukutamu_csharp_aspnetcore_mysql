@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BukuTamuApp.Models;
 using BukuTamuApp.Models.DTOs;
+using BukuTamuApp.Data;
 
 namespace BukuTamuApp.Controllers.Api
 {

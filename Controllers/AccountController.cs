@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using BukuTamuApp.Models;
+using BukuTamuApp.Data;
 using System.Security.Cryptography;
 using System.Text;
 
